@@ -1,0 +1,65 @@
+
+#include <stdio.h>
+typedef unsigned char bool; 
+/*CESAR ENCRYPTION DECRYPTION ALGORITHM ,Works on upper case strings*/
+
+ bool static checkRange(char charachter);
+ 
+void void_CEASAR_Encrypty(char message [],unsigned int key) 
+{
+    unsigned int i= 0 ;
+    while(message[i]!='\0')
+    {
+       if(checkRange(message[i]))
+       {
+          message[i] = (message[i] - 'A' + key) % 26 + 'A' ;      //encrypt this character
+       }
+       else
+       {
+           continue;        
+       }
+      i++;
+    }
+
+}
+
+void void_CEASAR_Decrypt(char message [],unsigned int key) 
+{
+    unsigned int i= 0 ;
+    while(message[i]!='\0')
+    {
+       if(checkRange(message[i]))
+       {
+          message[i] = (message[i] - 'A' - key) % 26 +'A';      //encrypt this character
+       }
+       else
+       {
+           continue;        
+       }
+      i++;
+    }
+
+}
+
+ bool static checkRange(char charachter)
+ {
+     bool valid = 0 ;
+      if((charachter<='Z')&& (charachter>='A'))
+      {
+          valid = 1;
+      }
+      return valid ;
+ }
+
+
+
+int main() {
+    // Write C code here
+char message [] = "ATTACKATONCE";
+printf("%s\n",message);
+void_CEASAR_Encrypty(message,4) ;
+printf("%s\n",message);
+void_CEASAR_Decrypt(message,4) ;
+printf("%s\n",message);
+    return 0;
+}
